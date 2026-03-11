@@ -33,8 +33,16 @@
 
   "navHome": "Home",
   "navLessons": "Lessons",
+  "navScanner": "Scanner",
   "navGames": "Games",
   "navProfile": "Profile",
+
+  "gamesHubTitle": "Games",
+  "gamesHubBiboMessage": "Pick a game and have fun learning!",
+  "gamesHubQuizTitle": "Quiz Time",
+  "gamesHubQuizDescription": "Test what you've learned!",
+  "gamesHubDictionaryTitle": "Picture Dictionary",
+  "gamesHubDictionaryDescription": "Explore Filipino words with pictures!",
 
   "lessonListTitle": "Phonics Lessons",
   "lessonListBiboMessage": "Pick a lesson and let's practice together!",

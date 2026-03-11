@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/dictionary/presentation/screens/dictionary_screen.dart';
 import '../features/face_mesh/presentation/screens/mouth_guide_screen.dart';
+import '../features/games/presentation/screens/games_hub_screen.dart';
 import '../features/learner/presentation/screens/learner_home_screen.dart';
 import '../features/phonics/presentation/screens/lesson_detail_screen.dart';
 import '../features/phonics/presentation/screens/lesson_list_screen.dart';
@@ -42,11 +43,14 @@ final GoRouter appRouter = GoRouter(
         if (location.startsWith('/learner/lessons') ||
             location.startsWith('/learner/lesson/')) {
           index = 1;
-        } else if (location.startsWith('/learner/scanner') ||
-            location.startsWith('/learner/dictionary')) {
+        } else if (location.startsWith('/learner/scanner')) {
           index = 2;
-        } else if (location.startsWith('/learner/progress')) {
+        } else if (location.startsWith('/learner/games') ||
+            location.startsWith('/learner/quiz') ||
+            location.startsWith('/learner/dictionary')) {
           index = 3;
+        } else if (location.startsWith('/learner/progress')) {
+          index = 4;
         }
 
         return LearnerShell(
@@ -60,6 +64,8 @@ final GoRouter appRouter = GoRouter(
               case 2:
                 context.go('/learner/scanner');
               case 3:
+                context.go('/learner/games');
+              case 4:
                 context.go('/learner/progress');
             }
           },
@@ -102,6 +108,10 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: '/learner/scanner',
           builder: (context, state) => const QrScannerScreen(),
+        ),
+        GoRoute(
+          path: '/learner/games',
+          builder: (context, state) => const GamesHubScreen(),
         ),
         GoRoute(
           path: '/learner/dictionary',

@@ -241,6 +241,7 @@ class ProgressScreen extends ConsumerWidget {
               mood: BiboMood.encouraging,
               size: BiboSize.small,
               message: '',
+              showBubble: false,
             ),
             const SizedBox(height: Spacing.md),
             Text(l10n.logoutConfirmation, style: AppTypography.bodyLarge),
