@@ -113,6 +113,11 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
   - Program Analytics Screen
   - Supervise Teachers Screen
   - Coordinator Report Screen
+  - Assign Teacher to Class Screen (Coordinator)
+  - Manage Class Learners Screen (Teacher — add learners per class)
+  - Manage Lessons Screen (Teacher — create/edit phonics lessons)
+  - Manage Books Screen (Teacher — add scannable QR books)
+  - Manage Games Screen (Teacher — create/add learning games)
 - [ ] Get wireframe approval from school teacher representative and DepEd coordinator
 - [x] Design and build shared widget library (original set):
   - `BiboMascot` widget (Lottie + speech bubble)
@@ -319,6 +324,81 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 - [x] "Export CSV" button → CSV placeholder
 - [x] Stub: `MockCoordinatorReportProvider`
 
+#### Assign Teacher to Class Screen _(new — not yet built)_
+
+- [ ] Class list with assigned teacher name (or "Unassigned" badge)
+- [ ] "Assign Teacher" button per class → bottom sheet with teacher dropdown + confirm
+- [ ] "Reassign" option for classes that already have a teacher (swap teacher)
+- [ ] "Create Class" FAB → bottom sheet (grade level + section name)
+- [ ] Empty state: "No classes yet. Tap + to create your first class."
+- [ ] Stub: `MockClassAssignmentProvider` returning sample classes and teachers
+
+---
+
+### DEVELOPER 🖼️ Teacher Content Management Screens _(new — not yet built)_
+
+#### Manage Class Learners Screen
+
+- [ ] Class selector pill row at top (shows only classes assigned to this teacher)
+- [ ] Learner list filtered by selected class — `LearnerListTile` per row
+- [ ] "Add Learner to Class" FAB → bottom sheet (search by LRN or name, select class)
+- [ ] "Move Learner" option → transfer learner between teacher's classes
+- [ ] Remove learner from class with confirmation dialog
+- [ ] Empty state per class: "No learners in this class yet. Tap + to add."
+- [ ] Stub: `MockClassLearnersProvider` returning sample learners grouped by class
+
+#### Manage Lessons Screen
+
+- [ ] Lesson list — card per lesson (title, phoneme/level, status badge: Draft | Published)
+- [ ] "Create Lesson" FAB → Create Lesson form screen:
+  - Lesson title input
+  - Phoneme / letter group selector (Marungko sequence)
+  - Lesson type selector (Phonics | CVC Words | Syllables | Sentences)
+  - Illustration upload placeholder (pick image from gallery)
+  - Audio recording placeholder (record pronunciation model)
+  - "Save as Draft" and "Publish" buttons
+- [ ] Edit existing lesson (tap card → same form pre-filled)
+- [ ] Delete lesson with confirmation dialog
+- [ ] Filter by lesson type / phoneme level
+- [ ] Empty state: "No lessons created yet. Tap + to create your first lesson."
+- [ ] Stub: `MockLessonManagementProvider` returning sample teacher-created lessons
+
+#### Manage Books Screen
+
+- [ ] Book list — card per book (cover thumbnail, title, author, QR status badge)
+- [ ] "Add Book" FAB → Add Book form screen:
+  - Book title input
+  - Author / source input
+  - Cover image upload placeholder
+  - Story content text area (or chapter list)
+  - "Generate QR Code" button → displays generated QR code image for printing
+  - Reading level selector (Beginner | Intermediate | Advanced)
+  - "Save" button
+- [ ] Edit existing book (tap card → same form pre-filled)
+- [ ] Delete book with confirmation dialog
+- [ ] QR code preview / download per book
+- [ ] Empty state: "No books added yet. Tap + to add your first book."
+- [ ] Stub: `MockBookManagementProvider` returning sample books with QR data
+
+#### Manage Games Screen
+
+- [ ] Game list — card per game (title, type badge, question count, status: Draft | Active)
+- [ ] "Create Game" FAB → Create Game form screen:
+  - Game title input
+  - Game type selector (Word Match | Picture Quiz | Letter Sound | Spelling Bee)
+  - Target phoneme / lesson link (optional — ties game to a lesson)
+  - Difficulty selector (Easy | Medium | Hard)
+  - Question builder section:
+    - "Add Question" button → question card (question text + 4 answer options + mark correct)
+    - Reorder questions via drag handle
+    - Delete question with swipe
+  - "Save as Draft" and "Publish" buttons
+- [ ] Edit existing game (tap card → same form pre-filled)
+- [ ] Delete game with confirmation dialog
+- [ ] Filter by game type / difficulty
+- [ ] Empty state: "No games created yet. Tap + to create your first game."
+- [ ] Stub: `MockGameManagementProvider` returning sample teacher-created games
+
 ---
 
 ### QA 🖼️ Frontend Review
@@ -334,6 +414,11 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 - [ ] Verify role selection screen routes correctly to each role's login
 - [ ] Verify learner settings screen — all 4 toggles/sliders render and respond to tap
 - [ ] Verify Help & Guide menu — all 6 categories display correctly
+- [ ] Verify Assign Teacher to Class screen — class list renders, assign/reassign bottom sheets work
+- [ ] Verify Manage Class Learners screen — class filter works, add/move/remove learner flows
+- [ ] Verify Manage Lessons screen — create/edit/delete lesson flows, draft vs published states
+- [ ] Verify Manage Books screen — add/edit/delete book, QR code generation placeholder displays
+- [ ] Verify Manage Games screen — create/edit/delete game, question builder add/reorder/delete
 - [ ] Get school teacher sign-off on Teacher + Learner UI (UAT Phase 1 — visual-only)
 - [ ] Get DepEd coordinator sign-off on Coordinator UI
 
@@ -342,6 +427,7 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 - [ ] Review all learner screen PRs for child-safe UI rules (U1–U8)
 - [ ] Review all teacher screen PRs — confirm no learner PII exposed in list views
 - [ ] Review coordinator screen PRs — confirm role-gating is in GoRouter guards
+- [ ] Review teacher content management PRs — confirm create/edit forms validate inputs
 - [ ] Review shared widget library PR
 - [ ] Confirm all colors from `AppColors`, all strings from `l10n/`
 - [ ] Confirm GoRouter used for all navigation; no raw `Navigator.push`
