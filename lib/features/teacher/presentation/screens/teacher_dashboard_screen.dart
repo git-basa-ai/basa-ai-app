@@ -29,13 +29,6 @@ class TeacherDashboardScreen extends ConsumerWidget {
           style:
               AppTypography.heading3.copyWith(color: AppColors.textOnPrimary),
         ),
-        actions: [
-          IconButton(
-            onPressed: () => context.go('/login'),
-            icon: const Icon(Icons.logout_rounded),
-            tooltip: l10n.logoutButton,
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -173,6 +166,36 @@ class TeacherDashboardScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: Spacing.lg),
 
+                  // Quick-action buttons.
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _QuickActionButton(
+                          label: l10n.teacherManageLearners,
+                          icon: Icons.people_outline_rounded,
+                          onTap: () => context.push('/teacher/manage'),
+                        ),
+                      ),
+                      const SizedBox(width: Spacing.sm),
+                      Expanded(
+                        child: _QuickActionButton(
+                          label: l10n.teacherViewProgress,
+                          icon: Icons.trending_up_rounded,
+                          onTap: () => context.push('/teacher/track-progress'),
+                        ),
+                      ),
+                      const SizedBox(width: Spacing.sm),
+                      Expanded(
+                        child: _QuickActionButton(
+                          label: l10n.teacherGenerateReport,
+                          icon: Icons.description_outlined,
+                          onTap: () => context.go('/teacher/report'),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: Spacing.lg),
+
                   // View Full Report button.
                   SizedBox(
                     width: double.infinity,
@@ -226,6 +249,51 @@ class _StatChip extends StatelessWidget {
               label,
               style: AppTypography.bodyMedium.copyWith(color: color),
               textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _QuickActionButton extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final VoidCallback onTap;
+
+  const _QuickActionButton({
+    required this.label,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: Spacing.md,
+          horizontal: Spacing.sm,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.primary.withOpacity(0.08),
+          borderRadius: BorderRadius.circular(Radii.md),
+        ),
+        child: Column(
+          children: [
+            Icon(icon, color: AppColors.primary, size: 24),
+            const SizedBox(height: Spacing.xs),
+            Text(
+              label,
+              style: AppTypography.bodyMedium.copyWith(
+                color: AppColors.primary,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

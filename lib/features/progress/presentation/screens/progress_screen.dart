@@ -256,7 +256,7 @@ class ProgressScreen extends ConsumerWidget {
             onPressed: () {
               Navigator.of(ctx).pop();
               ref.read(authProvider.notifier).logout();
-              context.go('/login');
+              context.go('/role-selection');
             },
             style: FilledButton.styleFrom(
               backgroundColor: AppColors.error,

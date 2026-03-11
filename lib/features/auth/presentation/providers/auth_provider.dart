@@ -27,6 +27,15 @@ class MockAuthNotifier extends StateNotifier<AuthState> {
     );
   }
 
+  /// Simulate coordinator login with email/password.
+  void loginAsCoordinator(String email, String password) {
+    state = const AuthState.authenticated(
+      uid: 'mock-coordinator-uid-001',
+      displayName: 'Dr. Reyes',
+      role: UserRole.coordinator,
+    );
+  }
+
   /// Sign out the current user.
   void logout() {
     state = const AuthState.unauthenticated();

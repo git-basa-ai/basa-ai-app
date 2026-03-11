@@ -123,7 +123,7 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
   - `OfflineBanner` widget
   - `LoadingOverlay` widget (Lottie animation)
   - `CelebrationOverlay` widget (confetti + Bibo)
-- [ ] Add new shared widgets to library:
+- [x] Add new shared widgets to library:
   - `RoleButton` widget (role selection card with icon)
   - `LearnerListTile` widget (name, LRN, status badge)
   - `StatSummaryCard` widget (number + label + color, reused across dashboards)
@@ -140,11 +140,11 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 
 ### DEVELOPER 🖼️ Entry & Shared Screens
 
-- [ ] **Role Selection Screen** — "BASA AI" logo, three role buttons (Learner | Teacher | Coordinator), utility icons (Help, Leaderboard, Settings)
-- [ ] **Help & Guide Menu** — dark header, scrollable card list of 6 categories (Sound Detection, Storytelling, QR Stories, Mouth Detection, Picture Dictionary, General Tips) with icons and arrows, Close button
-- [ ] **Leaderboard Screen** — top learners ranked by XP, class filter pill row, avatar + name + score rows; no real names — avatar only (Rule L3)
-- [ ] **App Settings Screen** — volume slider, language toggle (English | Filipino), background music on/off, visual filter toggle (high contrast); accessible from all roles
-- [ ] Stub: `MockSettingsProvider` returning hardcoded defaults
+- [x] **Role Selection Screen** — "BASA AI" logo, three role buttons (Learner | Teacher | Coordinator), utility icons (Help, Leaderboard, Settings)
+- [x] **Help & Guide Menu** — dark header, scrollable card list of 6 categories (Sound Detection, Storytelling, QR Stories, Mouth Detection, Picture Dictionary, General Tips) with icons and arrows, Close button
+- [x] **Leaderboard Screen** — top learners ranked by XP, class filter pill row, avatar + name + score rows; no real names — avatar only (Rule L3)
+- [x] **App Settings Screen** — volume slider, language toggle (English | Filipino), background music on/off, visual filter toggle (high contrast); accessible from all roles
+- [x] Stub: `MockSettingsProvider` returning hardcoded defaults
 
 ---
 
@@ -153,8 +153,8 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 - [x] Learner LRN login screen (input field, "Enter" button, Bibo welcome)
 - [x] Teacher email/password login screen
 - [x] Role-based route guard (learner → learner home; teacher → dashboard)
-- [ ] **Coordinator login screen** — email + password, "Coordinator" role badge in header
-- [ ] Logout screen / confirmation dialog
+- [x] **Coordinator login screen** — email + password, "Coordinator" role badge in header
+- [x] Logout screen / confirmation dialog
 - [x] Stub: `MockAuthProvider` returning hardcoded role + UID
 
 ---
@@ -214,12 +214,12 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 
 #### Learner Settings Screen _(new — not yet built)_
 
-- [ ] Volume slider (sound effects + voice playback)
-- [ ] Language toggle: English | Filipino (switches lesson language)
-- [ ] Background music on/off toggle
-- [ ] Visual filter toggle (high contrast mode for accessibility)
-- [ ] "Back to Home" button
-- [ ] Stub: `MockSettingsProvider`
+- [x] Volume slider (sound effects + voice playback)
+- [x] Language toggle: English | Filipino (switches lesson language)
+- [x] Background music on/off toggle
+- [x] Visual filter toggle (high contrast mode for accessibility)
+- [x] "Back to Home" button
+- [x] Stub: `MockSettingsProvider`
 
 ---
 
@@ -233,42 +233,42 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 - [x] Recent activity feed (per-learner lesson completions and struggle flags)
 - [x] "View Full Report" button → report screen
 - [x] Stub: `MockTeacherProvider` returning sample class data
-- [ ] Quick-action buttons: "Manage Learners" | "View Progress" | "Generate Report"
+- [x] Quick-action buttons: "Manage Learners" | "View Progress" | "Generate Report"
 
 #### Manage User Access Screen _(new — not yet built)_
 
-- [ ] Learner list — `LearnerListTile` per row (name, LRN, section, status badge)
-- [ ] "Add Learner" FAB → Add Learner bottom sheet (LRN input + name + grade + section)
-- [ ] Swipe-to-delete learner with confirmation dialog ("Remove [Name] from your class?")
-- [ ] Edit learner bottom sheet (edit name, section, permissions)
-- [ ] Empty state: "No learners yet. Tap + to add your first learner."
-- [ ] Stub: `MockUserManagementProvider`
+- [x] Learner list — `LearnerListTile` per row (name, LRN, section, status badge)
+- [x] "Add Learner" FAB → Add Learner bottom sheet (LRN input + name + grade + section)
+- [x] Swipe-to-delete learner with confirmation dialog ("Remove [Name] from your class?")
+- [x] Edit learner bottom sheet (edit name, section, permissions)
+- [x] Empty state: "No learners yet. Tap + to add your first learner."
+- [x] Stub: `MockUserManagementProvider`
 
 #### Track Learner Progress Screen _(new — not yet built)_
 
-- [ ] Learner header card: name, LRN, grade/section, reading level badge
-- [ ] Lessons completed progress bar (e.g. "8 / 20 lessons")
-- [ ] Average score display + trend arrow (improving / declining)
-- [ ] Activity log list: date | lesson | score | duration rows
-- [ ] "View Difficult Words" link → Difficult/Mastered Words Screen
-- [ ] "Add Feedback Note" button → Teacher Feedback Screen
-- [ ] Stub: `MockLearnerProgressProvider`
+- [x] Learner header card: name, LRN, grade/section, reading level badge
+- [x] Lessons completed progress bar (e.g. "8 / 20 lessons")
+- [x] Average score display + trend arrow (improving / declining)
+- [x] Activity log list: date | lesson | score | duration rows
+- [x] "View Difficult Words" link → Difficult/Mastered Words Screen
+- [x] "Add Feedback Note" button → Teacher Feedback Screen
+- [x] Stub: `MockLearnerProgressProvider`
 
 #### Difficult / Mastered Words Screen _(new — not yet built)_
 
-- [ ] Two-tab layout: "Struggling 🔴" | "Mastered 🟢"
-- [ ] `WordStatusChip` grid per tab (word + fail count or mastery date)
-- [ ] Filter by date range
-- [ ] Empty states: "No struggling words — great job! 🎉" / "No mastered words yet"
-- [ ] Stub: `MockWordTrackingProvider`
+- [x] Two-tab layout: "Struggling 🔴" | "Mastered 🟢"
+- [x] `WordStatusChip` grid per tab (word + fail count or mastery date)
+- [x] Filter by date range
+- [x] Empty states: "No struggling words — great job! 🎉" / "No mastered words yet"
+- [x] Stub: `MockWordTrackingProvider`
 
 #### Teacher Feedback Screen _(new — not yet built)_
 
-- [ ] Learner name + avatar in header
-- [ ] Existing feedback notes list (date + note text per row)
-- [ ] "Add Note" text field + "Save" button
-- [ ] Character limit indicator (max 300 characters)
-- [ ] Stub: `MockFeedbackProvider`
+- [x] Learner name + avatar in header
+- [x] Existing feedback notes list (date + note text per row)
+- [x] "Add Note" text field + "Save" button
+- [x] Character limit indicator (max 300 characters)
+- [x] Stub: `MockFeedbackProvider`
 
 #### Teacher Report Screen
 
@@ -277,8 +277,8 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 - [x] "Download Report" button (PDF placeholder)
 - [x] Date range filter
 - [x] Stub: `MockReportProvider`
-- [ ] Class filter (by section)
-- [ ] "Print Report" button → system print dialog placeholder
+- [x] Class filter (by section)
+- [x] "Print Report" button → system print dialog placeholder
 
 ---
 
@@ -286,38 +286,38 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 
 #### Coordinator Dashboard Screen
 
-- [ ] Header: "Program Overview" + coordinator name + "Coordinator" role badge
-- [ ] School-wide `StatSummaryCard` row: Total Learners | Total Teachers | Classes | Avg Score
-- [ ] Teachers list — card per teacher (name, class count, learner count, last active)
-- [ ] Program health indicator: % of learners on-track school-wide
-- [ ] "View All Analytics" button → Program Analytics Screen
-- [ ] Stub: `MockCoordinatorProvider` returning sample school-wide data
+- [x] Header: "Program Overview" + coordinator name + "Coordinator" role badge
+- [x] School-wide `StatSummaryCard` row: Total Learners | Total Teachers | Classes | Avg Score
+- [x] Teachers list — card per teacher (name, class count, learner count, last active)
+- [x] Program health indicator: % of learners on-track school-wide
+- [x] "View All Analytics" button → Program Analytics Screen
+- [x] Stub: `MockCoordinatorProvider` returning sample school-wide data
 
 #### Program Analytics Screen
 
-- [ ] Reading level distribution chart (Non-reader | Frustration | Instructional | Independent)
-- [ ] Trend line: avg score over time (week-by-week)
-- [ ] Top struggling words school-wide (word + count bar chart)
-- [ ] Section comparison table (class | avg score | % on-track)
-- [ ] Date range selector
-- [ ] Stub: `MockAnalyticsProvider`
+- [x] Reading level distribution chart (Non-reader | Frustration | Instructional | Independent)
+- [x] Trend line: avg score over time (week-by-week)
+- [x] Top struggling words school-wide (word + count bar chart)
+- [x] Section comparison table (class | avg score | % on-track)
+- [x] Date range selector
+- [x] Stub: `MockAnalyticsProvider`
 
 #### Supervise Teachers Screen
 
-- [ ] Teacher list — `LearnerListTile`-style rows (teacher name, class, learner count, last login)
-- [ ] Tap teacher → Teacher Detail View (their class stats, recent activity, learner count by status)
-- [ ] Filter teachers by grade level
-- [ ] Empty state: "No teachers registered yet"
-- [ ] Stub: `MockTeacherSupervisionProvider`
+- [x] Teacher list — `LearnerListTile`-style rows (teacher name, class, learner count, last login)
+- [x] Tap teacher → Teacher Detail View (their class stats, recent activity, learner count by status)
+- [x] Filter teachers by grade level
+- [x] Empty state: "No teachers registered yet"
+- [x] Stub: `MockTeacherSupervisionProvider`
 
 #### Coordinator Report Screen
 
-- [ ] School-wide report: all classes, all teachers, all learners in one view
-- [ ] Section breakdown table
-- [ ] Phil-IRI pre/post comparison section (pre-test | post-test | delta per learner)
-- [ ] "Export Full Report" button → PDF placeholder
-- [ ] "Export CSV" button → CSV placeholder
-- [ ] Stub: `MockCoordinatorReportProvider`
+- [x] School-wide report: all classes, all teachers, all learners in one view
+- [x] Section breakdown table
+- [x] Phil-IRI pre/post comparison section (pre-test | post-test | delta per learner)
+- [x] "Export Full Report" button → PDF placeholder
+- [x] "Export CSV" button → CSV placeholder
+- [x] Stub: `MockCoordinatorReportProvider`
 
 ---
 

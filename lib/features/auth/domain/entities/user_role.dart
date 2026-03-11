@@ -5,4 +5,7 @@ enum UserRole {
 
   /// A teacher using email/password login.
   teacher,
+
+  /// A DepEd coordinator using email/password login.
+  coordinator,
 }

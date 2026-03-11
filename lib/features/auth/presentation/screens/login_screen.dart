@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../app/theme/colors.dart';
 import '../../../../app/theme/typography.dart';
@@ -11,31 +12,29 @@ import '../../../../shared/widgets/loading_overlay.dart';
 import '../../domain/entities/user_role.dart';
 import '../providers/auth_provider.dart';
 
-/// Login screen with tabs for Learner (LRN) and Teacher (email/password).
+/// Role-specific login screen.
+///
+/// Pass [role] = `learner` or `teacher` to display only that role's form.
 class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({super.key});
+  final String role;
+
+  const LoginScreen({super.key, required this.role});
 
   @override
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabController;
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _lrnController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoading = false;
+  bool _obscurePassword = true;
 
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-  }
+  bool get _isLearner => widget.role == 'learner';
 
   @override
   void dispose() {
-    _tabController.dispose();
     _lrnController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -78,12 +77,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (role == UserRole.learner) {
             context.go('/learner');
-          } else {
+          } else if (role == UserRole.teacher) {
             context.go('/teacher');
+          } else {
+            context.go('/coordinator');
           }
         });
       },
     );
+
+    final roleColor = _isLearner ? AppColors.primary : AppColors.secondary;
+    final roleLabel = _isLearner ? l10n.loginLearnerTab : l10n.loginTeacherTab;
+    final biboMessage =
+        _isLearner ? l10n.loginBiboWelcome : l10n.loginBiboTeacher;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -91,46 +97,89 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
         children: [
           SafeArea(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(Spacing.xxl),
+              padding: const EdgeInsets.symmetric(horizontal: Spacing.xxl),
               child: Column(
                 children: [
-                  const SizedBox(height: Spacing.xxxl),
+                  const SizedBox(height: Spacing.lg),
+
+                  // Back row
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                      onPressed: () => context.go('/role-selection'),
+                      icon: const Icon(Iconsax.arrow_left),
+                      style: IconButton.styleFrom(
+                        backgroundColor: AppColors.surface,
+                        shape: const CircleBorder(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: Spacing.md),
+
+                  // Bibo mascot
                   BiboMascot(
-                    message: _tabController.index == 0
-                        ? l10n.loginBiboWelcome
-                        : l10n.loginBiboTeacher,
+                    message: biboMessage,
                     mood: BiboMood.happy,
                     size: BiboSize.large,
                   ),
                   const SizedBox(height: Spacing.xxl),
+
+                  // Title
                   Text(l10n.loginTitle, style: AppTypography.heading1),
-                  const SizedBox(height: Spacing.xxl),
+                  const SizedBox(height: Spacing.md),
+
+                  // Role badge
                   Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      borderRadius: BorderRadius.circular(Radii.lg),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: Spacing.lg,
+                      vertical: Spacing.sm,
                     ),
-                    child: TabBar(
-                      controller: _tabController,
-                      onTap: (_) => setState(() {}),
-                      labelColor: AppColors.primary,
-                      unselectedLabelColor: AppColors.textSecondary,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      labelStyle: AppTypography.labelLarge,
-                      unselectedLabelStyle: AppTypography.bodyMedium,
-                      tabs: [
-                        Tab(text: l10n.loginLearnerTab),
-                        Tab(text: l10n.loginTeacherTab),
+                    decoration: BoxDecoration(
+                      color: roleColor.withOpacity(0.12),
+                      borderRadius: BorderRadius.circular(Radii.pill),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          _isLearner ? Iconsax.book : Iconsax.teacher,
+                          size: 18,
+                          color: roleColor,
+                        ),
+                        const SizedBox(width: Spacing.sm),
+                        Text(
+                          roleLabel,
+                          style: AppTypography.labelMedium
+                              .copyWith(color: roleColor),
+                        ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: Spacing.xxl),
-                  AnimatedSwitcher(
-                    duration: AppDurations.fast,
-                    child: _tabController.index == 0
-                        ? _buildLearnerForm(l10n)
-                        : _buildTeacherForm(l10n),
+                  const SizedBox(height: Spacing.xxxl),
+
+                  // Form card
+                  Container(
+                    padding: const EdgeInsets.all(Spacing.xxl),
+                    decoration: BoxDecoration(
+                      color: AppColors.surface,
+                      borderRadius: BorderRadius.circular(Radii.xl),
+                      border: Border.all(
+                        color: roleColor.withOpacity(0.2),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: roleColor.withOpacity(0.06),
+                          blurRadius: 20,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
+                    ),
+                    child: _isLearner
+                        ? _buildLearnerForm(l10n, roleColor)
+                        : _buildTeacherForm(l10n, roleColor),
                   ),
+
+                  const SizedBox(height: Spacing.xxxl),
                 ],
               ),
             ),
@@ -141,65 +190,116 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
     );
   }
 
-  Widget _buildLearnerForm(AppLocalizations l10n) {
+  Widget _buildLearnerForm(AppLocalizations l10n, Color accent) {
     return Column(
-      key: const ValueKey('learner-form'),
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(l10n.loginLrnLabel, style: AppTypography.labelMedium),
+        const SizedBox(height: Spacing.sm),
         TextField(
           controller: _lrnController,
           keyboardType: TextInputType.number,
           style: AppTypography.bodyLarge,
           decoration: InputDecoration(
             hintText: l10n.loginLrnHint,
-            labelText: l10n.loginLrnLabel,
-            prefixIcon: const Icon(Icons.badge_outlined),
+            prefixIcon: const Icon(Iconsax.card),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(Radii.md),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(Radii.md),
+              borderSide: BorderSide(color: accent, width: 2),
+            ),
           ),
         ),
         const SizedBox(height: Spacing.xxl),
         SizedBox(
           width: double.infinity,
           height: TouchTargets.buttonHeight,
-          child: ElevatedButton(
+          child: FilledButton(
             onPressed: _loginAsLearner,
-            child: Text(l10n.loginEnterButton),
+            style: FilledButton.styleFrom(
+              backgroundColor: accent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.md),
+              ),
+            ),
+            child: Text(
+              l10n.loginEnterButton,
+              style: AppTypography.labelLarge
+                  .copyWith(color: AppColors.textOnPrimary),
+            ),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildTeacherForm(AppLocalizations l10n) {
+  Widget _buildTeacherForm(AppLocalizations l10n, Color accent) {
     return Column(
-      key: const ValueKey('teacher-form'),
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(l10n.loginTeacherEmailLabel, style: AppTypography.labelMedium),
+        const SizedBox(height: Spacing.sm),
         TextField(
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           style: AppTypography.bodyLarge,
           decoration: InputDecoration(
             hintText: l10n.loginTeacherEmailHint,
-            labelText: l10n.loginTeacherEmailLabel,
-            prefixIcon: const Icon(Icons.email_outlined),
+            prefixIcon: const Icon(Iconsax.sms),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(Radii.md),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(Radii.md),
+              borderSide: BorderSide(color: accent, width: 2),
+            ),
           ),
         ),
         const SizedBox(height: Spacing.lg),
+        Text(l10n.loginTeacherPasswordLabel, style: AppTypography.labelMedium),
+        const SizedBox(height: Spacing.sm),
         TextField(
           controller: _passwordController,
-          obscureText: true,
+          obscureText: _obscurePassword,
           style: AppTypography.bodyLarge,
           decoration: InputDecoration(
             hintText: l10n.loginTeacherPasswordHint,
-            labelText: l10n.loginTeacherPasswordLabel,
-            prefixIcon: const Icon(Icons.lock_outlined),
+            prefixIcon: const Icon(Iconsax.lock),
+            suffixIcon: IconButton(
+              icon: Icon(
+                _obscurePassword ? Iconsax.eye_slash : Iconsax.eye,
+              ),
+              onPressed: () =>
+                  setState(() => _obscurePassword = !_obscurePassword),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(Radii.md),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(Radii.md),
+              borderSide: BorderSide(color: accent, width: 2),
+            ),
           ),
         ),
         const SizedBox(height: Spacing.xxl),
         SizedBox(
           width: double.infinity,
           height: TouchTargets.buttonHeight,
-          child: ElevatedButton(
+          child: FilledButton(
             onPressed: _loginAsTeacher,
-            child: Text(l10n.loginTeacherButton),
+            style: FilledButton.styleFrom(
+              backgroundColor: accent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.md),
+              ),
+            ),
+            child: Text(
+              l10n.loginTeacherButton,
+              style: AppTypography.labelLarge
+                  .copyWith(color: AppColors.textOnPrimary),
+            ),
           ),
         ),
       ],
