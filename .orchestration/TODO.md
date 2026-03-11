@@ -73,17 +73,17 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 
 ---
 
-## PHASE 2 — SYSTEM DESIGN
+## PHASE 2 — SYSTEM DESIGN ✅
 
 ### ARCHITECT
 
-- [ ] Finalize sync conflict resolution strategy document
-- [ ] Produce complete Hive TypeAdapter registry (all typeIds assigned)
-- [ ] Write complete Flutter component diagram (features and shared widgets)
+- [x] Finalize sync conflict resolution strategy document
+- [x] Produce complete Hive TypeAdapter registry (all typeIds assigned)
+- [x] Write complete Flutter component diagram (features and shared widgets)
 
 ### DEVELOPER 🖼️ Frontend
 
-- [ ] Create UI wireframes for all screens (mobile-first, 375dp baseline):
+- [x] Create UI wireframes for all screens (mobile-first, 375dp baseline):
   - Learner Home Screen
   - Phonics Lesson Screen
   - Quiz / Answer Screen
@@ -97,7 +97,7 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
   - Report Screen
   - Login Screen (Learner + Teacher)
 - [ ] Get wireframe approval from school teacher representative
-- [ ] Design and build shared widget library:
+- [x] Design and build shared widget library:
   - `BiboMascot` widget (Lottie + speech bubble)
   - `ActivityCard` widget
   - `AnswerTile` widget (default, correct, wrong states)
