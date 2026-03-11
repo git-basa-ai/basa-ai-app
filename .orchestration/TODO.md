@@ -27,8 +27,8 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 - [x] Define Clean Architecture layers (Presentation / Domain / Data / Infrastructure)
 - [x] Produce Data Flow Diagram (DFD)
 - [x] Produce Network Infrastructure Model
-- [ ] Lock Hive box schema (box names, TypeAdapter typeIds, encryption flags)
-- [ ] Lock Firestore collection schema (`/learners`, `/classes`, `/lessons`)
+- [x] Lock Hive box schema (box names, TypeAdapter typeIds, encryption flags)
+- [x] Lock Firestore collection schema (`/learners`, `/classes`, `/lessons`)
 - [ ] Write API integration contracts (Speech, FaceMesh, ML Kit, Firebase Auth)
 - [ ] Define Firebase security rules baseline (Learner / Teacher / Admin)
 
@@ -36,11 +36,11 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 
 - [x] Initialize Flutter project (`flutter create basa_ai`)
 - [x] Set up Firebase project (Auth + Firestore + Storage)
-- [ ] Set up feature-based folder structure (`features/`, `shared/`, `infrastructure/`)
-- [ ] Add all pubspec dependencies (Riverpod, Hive, Firebase, GoRouter, Lottie, etc.)
-- [ ] Set up `AppColors`, `AppTypography`, `AppTheme` in `app/theme/`
-- [ ] Set up GoRouter with placeholder routes for all screens
-- [ ] Add Nunito font via `google_fonts`
+- [x] Set up feature-based folder structure (`features/`, `shared/`, `infrastructure/`)
+- [x] Add all pubspec dependencies (Riverpod, Hive, Firebase, GoRouter, Lottie, etc.)
+- [x] Set up `AppColors`, `AppTypography`, `AppTheme` in `app/theme/`
+- [x] Set up GoRouter with placeholder routes for all screens
+- [x] Add Nunito font via `google_fonts`
 
 ### PM
 
