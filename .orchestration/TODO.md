@@ -109,85 +109,85 @@ Layer: 🖼️ Frontend (UI) | ⚙️ Service (Hive / Firebase / API)
 
 ---
 
-## PHASE 3 — FRONTEND DEVELOPMENT (UI-First)
+## PHASE 3 — FRONTEND DEVELOPMENT (UI-First) ✅
 
 > 🖼️ All screens built with **mock/stubbed Riverpod providers**. No real Hive or Firebase at this stage.
 
 ### DEVELOPER 🖼️ Auth Screens
 
-- [ ] Learner LRN login screen (input field, "Enter" button, Bibo welcome)
-- [ ] Teacher email/password login screen
-- [ ] Role-based route guard (learner → learner home; teacher → dashboard)
+- [x] Learner LRN login screen (input field, "Enter" button, Bibo welcome)
+- [x] Teacher email/password login screen
+- [x] Role-based route guard (learner → learner home; teacher → dashboard)
 - [ ] Logout screen / confirmation dialog
-- [ ] Stub: `MockAuthProvider` returning hardcoded role + UID
+- [x] Stub: `MockAuthProvider` returning hardcoded role + UID
 
 ### DEVELOPER 🖼️ Learner Home Screen
 
-- [ ] Header bar: greeting + level badge + Bibo avatar
-- [ ] XP progress bar (animated fill)
-- [ ] "Today's Lesson" primary `ActivityCard`
-- [ ] 2-column secondary card grid (Games, Word List)
-- [ ] Bottom `NavigationBar` (Home | Lessons | Games | Profile)
-- [ ] Stub: `MockLearnerProvider` returning hardcoded learner profile + XP
+- [x] Header bar: greeting + level badge + Bibo avatar
+- [x] XP progress bar (animated fill)
+- [x] "Today's Lesson" primary `ActivityCard`
+- [x] 2-column secondary card grid (Games, Word List)
+- [x] Bottom `NavigationBar` (Home | Lessons | Games | Profile)
+- [x] Stub: `MockLearnerProvider` returning hardcoded learner profile + XP
 
 ### DEVELOPER 🖼️ Phonics Lesson Screens
 
-- [ ] Lesson list screen (cards per phoneme level, progress per card)
-- [ ] Lesson detail screen: phoneme illustration, audio button, "Speak Now" button
-- [ ] Mouth movement guide panel (placeholder camera overlay + lip diagram)
-- [ ] Lesson completion screen (celebrate animation, XP earned display)
-- [ ] Stub: `MockLessonProvider` returning Marungko sequence sample data
+- [x] Lesson list screen (cards per phoneme level, progress per card)
+- [x] Lesson detail screen: phoneme illustration, audio button, "Speak Now" button
+- [x] Mouth movement guide panel (placeholder camera overlay + lip diagram)
+- [x] Lesson completion screen (celebrate animation, XP earned display)
+- [x] Stub: `MockLessonProvider` returning Marungko sequence sample data
 
 ### DEVELOPER 🖼️ Quiz / Answer Screens
 
-- [ ] Question card (illustration + question text)
-- [ ] 2×2 answer tile grid
-- [ ] Correct answer state: green border + ✅ + `celebrate` animation
-- [ ] Wrong answer state: red border + ❌ + `shakeMild` animation
-- [ ] Score tracker pill in header
-- [ ] "Next Question →" button (disabled until answer selected)
-- [ ] Stub: `MockQuizProvider` returning sample question set
+- [x] Question card (illustration + question text)
+- [x] 2×2 answer tile grid
+- [x] Correct answer state: green border + ✅ + `celebrate` animation
+- [x] Wrong answer state: red border + ❌ + `shakeMild` animation
+- [x] Score tracker pill in header
+- [x] "Next Question →" button (disabled until answer selected)
+- [x] Stub: `MockQuizProvider` returning sample question set
 
 ### DEVELOPER 🖼️ QR Scanner Screen
 
-- [ ] Camera preview with friendly rounded guide border
-- [ ] "Scan a Book QR Code" instruction text + Bibo bubble
-- [ ] Storybook unlock success state (book cover reveal animation)
-- [ ] Invalid QR error state (friendly message: "Hmm, try a different QR code! 🔍")
-- [ ] Stub: `MockScannerProvider` simulating successful scan
+- [x] Camera preview with friendly rounded guide border
+- [x] "Scan a Book QR Code" instruction text + Bibo bubble
+- [x] Storybook unlock success state (book cover reveal animation)
+- [x] Invalid QR error state (friendly message: "Hmm, try a different QR code! 🔍")
+- [x] Stub: `MockScannerProvider` simulating successful scan
 
 ### DEVELOPER 🖼️ Picture Dictionary Screen
 
-- [ ] 2-column word card grid (illustration + word label)
-- [ ] Word card tap state: audio waveform animation placeholder
-- [ ] Search/filter bar (letter filter pills: A | B | C ...)
-- [ ] Offline indicator badge on screen header
-- [ ] Stub: `MockDictionaryProvider` returning sample word list
+- [x] 2-column word card grid (illustration + word label)
+- [x] Word card tap state: audio waveform animation placeholder
+- [x] Search/filter bar (letter filter pills: A | B | C ...)
+- [x] Offline indicator badge on screen header
+- [x] Stub: `MockDictionaryProvider` returning sample word list
 
 ### DEVELOPER 🖼️ Progress / Profile Screen
 
-- [ ] Level badge + XP bar + "Next level at X XP" label
-- [ ] Completed lessons list (checkmark per lesson)
-- [ ] Struggle words section (words needing more practice)
-- [ ] Achievement badges row (first lesson, first level-up, etc.)
-- [ ] Stub: `MockProgressProvider` returning hardcoded progress state
+- [x] Level badge + XP bar + "Next level at X XP" label
+- [x] Completed lessons list (checkmark per lesson)
+- [x] Struggle words section (words needing more practice)
+- [x] Achievement badges row (first lesson, first level-up, etc.)
+- [x] Stub: `MockProgressProvider` returning hardcoded progress state
 
 ### DEVELOPER 🖼️ Teacher Dashboard Screen
 
-- [ ] Header: "Class Overview" + teacher name + role badge
-- [ ] Class selector pill row (Grade 1 Sec A | Grade 1 Sec B)
-- [ ] Summary stats card: total learners, on-track, needs help, non-readers
-- [ ] Recent activity feed (per-learner lesson completions and struggle flags)
-- [ ] "View Full Report" button → report screen
-- [ ] Stub: `MockTeacherProvider` returning sample class data
+- [x] Header: "Class Overview" + teacher name + role badge
+- [x] Class selector pill row (Grade 1 Sec A | Grade 1 Sec B)
+- [x] Summary stats card: total learners, on-track, needs help, non-readers
+- [x] Recent activity feed (per-learner lesson completions and struggle flags)
+- [x] "View Full Report" button → report screen
+- [x] Stub: `MockTeacherProvider` returning sample class data
 
 ### DEVELOPER 🖼️ Teacher Report Screen
 
-- [ ] Per-learner progress table (name, lessons done, avg score, struggle words)
-- [ ] Color-coded status column (🟢 on track | 🟡 needs attention | 🔴 non-reader)
-- [ ] "Download Report" button (PDF placeholder)
-- [ ] Date range filter
-- [ ] Stub: `MockReportProvider`
+- [x] Per-learner progress table (name, lessons done, avg score, struggle words)
+- [x] Color-coded status column (🟢 on track | 🟡 needs attention | 🔴 non-reader)
+- [x] "Download Report" button (PDF placeholder)
+- [x] Date range filter
+- [x] Stub: `MockReportProvider`
 
 ### QA 🖼️ Frontend Review
 
