@@ -29,9 +29,9 @@ class AppColors {
   static const Color xpGoldLight = Color(0xFFFFFF52);
 
   // ── Background & Surface ─────────────────────────────────────
-  static const Color background = Color(0xFFF5F7FA);
+  static const Color background = Colors.transparent;
   static const Color surface = Color(0xFFFFFFFF);
-  static const Color scaffoldBackground = Color(0xFFF5F7FA);
+  static const Color scaffoldBackground = Colors.transparent;
 
   // ── Text ─────────────────────────────────────────────────────
   static const Color textPrimary = Color(0xFF212121);

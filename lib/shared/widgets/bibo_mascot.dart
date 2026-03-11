@@ -111,52 +111,17 @@ class _BiboMascotState extends State<BiboMascot>
     }
   }
 
-  Color get _moodColor {
-    switch (widget.mood) {
-      case BiboMood.happy:
-        return AppColors.primary;
-      case BiboMood.thinking:
-        return AppColors.primaryLight;
-      case BiboMood.encouraging:
-        return AppColors.secondary;
-      case BiboMood.celebrating:
-        return AppColors.xpGold;
-    }
-  }
-
-  IconData get _moodIcon {
-    switch (widget.mood) {
-      case BiboMood.happy:
-        return Icons.sentiment_very_satisfied_rounded;
-      case BiboMood.thinking:
-        return Icons.psychology_rounded;
-      case BiboMood.encouraging:
-        return Icons.thumb_up_rounded;
-      case BiboMood.celebrating:
-        return Icons.celebration_rounded;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final disableAnimations =
-        MediaQuery.of(context).disableAnimations;
+    final disableAnimations = MediaQuery.of(context).disableAnimations;
 
     final avatar = GestureDetector(
       onTap: widget.onTap,
-      child: Container(
+      child: Image.asset(
+        'assets/images/character.png',
         width: _avatarSize,
         height: _avatarSize,
-        decoration: BoxDecoration(
-          color: _moodColor.withOpacity(0.15),
-          shape: BoxShape.circle,
-          border: Border.all(color: _moodColor, width: 2),
-        ),
-        child: Icon(
-          _moodIcon,
-          size: _avatarSize * 0.55,
-          color: _moodColor,
-        ),
+        fit: BoxFit.contain,
       ),
     );
 
