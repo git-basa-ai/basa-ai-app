@@ -125,7 +125,7 @@ class _GuideCategoryCard extends StatelessWidget {
               ],
             ),
           ),
-          Icon(
+          const Icon(
             Icons.arrow_forward_ios_rounded,
             color: AppColors.textSecondary,
             size: 16,

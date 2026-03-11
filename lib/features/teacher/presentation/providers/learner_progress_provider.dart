@@ -40,7 +40,7 @@ class LearnerDetail {
   });
 }
 
-final _mockLearnerDetail = LearnerDetail(
+const _mockLearnerDetail = LearnerDetail(
   name: 'Juan Dela Cruz',
   lrn: '112233445566',
   gradeSection: 'Grade 1 — Sampaguita',
@@ -49,7 +49,7 @@ final _mockLearnerDetail = LearnerDetail(
   totalLessons: 20,
   avgScore: 78.0,
   isImproving: true,
-  activityLog: const [
+  activityLog: [
     ActivityLogEntry(
       date: 'Mar 10',
       lesson: 'Letrang Mm',
