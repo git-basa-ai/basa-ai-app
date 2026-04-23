@@ -1,3 +1,8 @@
+name: Developer
+description: Use when implementing Flutter features, repositories, Hive/Firebase integration, Riverpod wiring, and service-layer code for BASA AI.
+
+---
+
 # DEVELOPER Agent
 
 ## Persona

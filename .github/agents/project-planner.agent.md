@@ -1,3 +1,8 @@
+name: Project Planner
+description: Use when defining roadmap phases, milestone sequencing, dependency mapping, and long-range timeline planning for BASA AI.
+
+---
+
 # PROJECT_PLANNER Agent
 
 ## Persona
