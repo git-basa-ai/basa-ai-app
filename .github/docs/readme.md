@@ -1,10 +1,38 @@
-# README — BASA AI Orchestration Layer
+# README — BASA AI Agent and Docs Layer
 
 ## What Is This?
 
-This `.orchestration/` directory is the **central command layer** for the **BASA AI** project. It defines how every agent persona, every skill document, and every phase of the project works together to deliver a Flutter-based phonics reading intervention app for Grade 1 and Grade 2 non-readers at Santa Rosa Elementary School, Mulanay, Quezon, Philippines.
+This `.github/` customization layer is the **central command layer** for the **BASA AI** project. It defines how every agent persona, every skill document, and every phase of the project works together to deliver a Flutter-based phonics reading intervention app for Grade 1 and Grade 2 non-readers at Santa Rosa Elementary School, Mulanay, Quezon, Philippines.
 
 If you are new to this project — start here.
+
+---
+
+## Quick Index
+
+### Agents
+
+- [Architect](../agents/architect.agent.md)
+- [Developer](../agents/developer.agent.md)
+- [PM](../agents/pm.agent.md)
+- [Project Planner](../agents/project-planner.agent.md)
+- [QA](../agents/qa.agent.md)
+- [Reviewer](../agents/reviewer.agent.md)
+
+### Core Docs
+
+- [README](README.md)
+- [ARCHITECTURE](ARCHITECTURE.md)
+- [RULES](RULES.md)
+- [TODO](TODO.md)
+- [Flutter Component Diagram](flutter_component_diagram.md)
+- [Hive Type Adapter Registry](hive_type_adapter_registry.md)
+- [Sync Conflict Resolution Strategy](sync_conflict_resolution_strategy.md)
+
+### Skills
+
+- [Backend Design Skill](../skills/backend-design/SKILL.md)
+- [Frontend Design Skill](../skills/frontend-design/SKILL.md)
 
 ---
 
@@ -35,15 +63,15 @@ If you are new to this project — start here.
 
 ## How This Orchestration Works
 
-BASA AI uses a **multi-agent persona model**. There is no single human assigned to each role — instead, each `.md` file in `agents/` defines a **persona** with a specific mindset, responsibilities, and decision authority. When working on the project, you adopt the relevant persona for the task at hand, or collaborate across personas for cross-cutting decisions.
+BASA AI uses a **multi-agent persona model**. There is no single human assigned to each role — instead, each `.agent.md` file in `.github/agents/` defines a **persona** with a specific mindset, responsibilities, and decision authority. When working on the project, you adopt the relevant persona for the task at hand, or collaborate across personas for cross-cutting decisions.
 
 ```
-You are building a new feature?         →  Read DEVELOPER.md
-You are making an architecture decision? →  Read ARCHITECT.md
-You are planning the next sprint?        →  Read PM.md
-You are reviewing a PR?                 →  Read REVIEWER.md
-You are writing test cases?             →  Read QA.md
-You are checking phase milestones?      →  Read PROJECT_PLANNER.md
+You are building a new feature?         →  Read .github/agents/developer.agent.md
+You are making an architecture decision? →  Read .github/agents/architect.agent.md
+You are planning the next sprint?        →  Read .github/agents/pm.agent.md
+You are reviewing a PR?                 →  Read .github/agents/reviewer.agent.md
+You are writing test cases?             →  Read .github/agents/qa.agent.md
+You are checking phase milestones?      →  Read .github/agents/project-planner.agent.md
 ```
 
 ---
@@ -51,20 +79,27 @@ You are checking phase milestones?      →  Read PROJECT_PLANNER.md
 ## Directory Structure
 
 ```
-.orchestration/
-├── agents/                    # Multi-agent persona definitions
-│   ├── ARCHITECT.md           # System design, API contracts, architecture governance
-│   ├── DEVELOPER.md           # Flutter implementation standards, structure, DoD
-│   ├── PM.md                  # Backlog, sprint planning, risk management
-│   ├── PROJECT_PLANNER.md     # Roadmap, phase milestones, dependency mapping
-│   ├── QA.md                  # Test plans, UAT protocol, bug severity
-│   └── REVIEWER.md            # PR review standards, merge rules, SLAs
+.github/
+├── agents/                    # Custom agent personas (.agent.md)
+│   ├── architect.agent.md
+│   ├── developer.agent.md
+│   ├── pm.agent.md
+│   ├── project-planner.agent.md
+│   ├── qa.agent.md
+│   └── reviewer.agent.md
+│
+├── docs/                      # Project architecture and governance markdowns
+│   ├── README.md              # This file — start here
+│   ├── ARCHITECTURE.md        # Full system architecture, Hive schema, sync strategy
+│   ├── RULES.md               # Non-negotiable project rules (all personas enforce these)
+│   ├── TODO.md                # Live task tracker — updated every sprint
+│   └── ...                    # Supporting design and sync docs
 │
 └── skills/
-    ├── README.md              # This file — start here
-    ├── ARCHITECTURE.md        # Full system architecture, Hive schema, sync strategy
-    ├── RULES.md               # Non-negotiable project rules (all personas enforce these)
-    └── TODO.md                # Live task tracker — updated every sprint
+    ├── backend-design/
+    │   └── SKILL.md
+    └── frontend-design/
+        └── SKILL.md
 ```
 
 ---
@@ -131,10 +166,10 @@ Once the UI is approved → wire in Hive repositories → wire in Firestore sync
 
 1. Read **this file** (README.md) completely
 2. Read **RULES.md** — memorize the Quick Reference Card
-3. Read your **active agent file** (e.g., `agents/DEVELOPER.md`)
+3. Read your **active agent file** (e.g., `.github/agents/developer.agent.md`)
 4. Read **ARCHITECTURE.md** for the full technical picture
 5. Check **TODO.md** for current sprint tasks
-6. Check **PROJECT_PLANNER.md** for phase context
+6. Check **.github/agents/project-planner.agent.md** for phase context
 7. Ask PM persona if questions about priorities
 8. Ask ARCHITECT persona if questions about technical decisions
 

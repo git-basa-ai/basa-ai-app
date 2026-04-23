@@ -313,3 +313,61 @@ service cloud.firestore {
 6. **Learner isolation**: Firebase rules prevent cross-learner data access
 7. **Graceful degradation**: Any missing API response → informative UI, never crash
 8. **Sync queue**: All offline writes queued in `syncQueueBox` — never fire-and-forget
+
+---
+
+## Agent Model Assignment Policy
+
+This section defines required model routing for all orchestration agent calls.
+
+### Model Matrix
+
+| Agent             | Required Model            | Priority |
+| ----------------- | ------------------------- | -------- |
+| `architect`       | `GPT-5.3-Codex (copilot)` | High     |
+| `developer`       | `GPT-5.3-Codex (copilot)` | High     |
+| `reviewer`        | `gpt-5-mini (copilot)`    | Standard |
+| `qa`              | `gpt-5-mini (copilot)`    | Standard |
+| `pm`              | `gpt-5-mini (copilot)`    | Standard |
+| `project-planner` | `gpt-5-mini (copilot)`    | Standard |
+| `Explore`         | `gpt-5-mini (copilot)`    | Standard |
+
+### Enforcement Rules
+
+1. Agent callers must pass `model` explicitly on every `runSubagent` call.
+2. If a call omits `model`, it is non-compliant with this architecture.
+3. If a required model is unavailable, fail fast and log the fallback decision before retry.
+4. `architect` and `developer` must not be downgraded unless there is an explicit outage.
+
+### Invocation Contract
+
+Use this shape for all agent calls:
+
+```json
+{
+  "description": "short task summary",
+  "agentName": "architect|developer|reviewer|qa|pm|project-planner|Explore",
+  "model": "<Model Name (Vendor)>",
+  "prompt": "detailed instructions"
+}
+```
+
+### Example Calls
+
+```json
+{
+  "description": "Design sync architecture",
+  "agentName": "architect",
+  "model": "GPT-5.3-Codex (copilot)",
+  "prompt": "Propose a conflict-safe sync plan for Hive and Firestore."
+}
+```
+
+```json
+{
+  "description": "Review pull request",
+  "agentName": "reviewer",
+  "model": "gpt-5-mini (copilot)",
+  "prompt": "Identify regressions and missing tests in changed files."
+}
+```
