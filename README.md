@@ -25,6 +25,26 @@ Install these tools before running the project:
 4. Xcode (macOS only, for iOS builds)
 5. Firebase project configuration (for cloud-backed features)
 
+## Version Requirements (From This Codebase)
+
+These values are based on current project configuration files.
+
+1. Dart SDK: >=3.3.4 <4.0.0
+   - Source: pubspec.yaml environment sdk constraint
+
+2. Flutter SDK: use a Flutter release that includes Dart 3.3.4 or newer
+   - Recommended baseline: Flutter 3.22.0 or newer
+   - Reason: the project does not pin a flutter: version in pubspec, but it requires Dart >=3.3.4
+
+3. Android SDK:
+   - Minimum Android API for app install: minSdkVersion 21
+   - Compile/target SDK: inherited from Flutter Gradle plugin (flutter.compileSdkVersion and flutter.targetSdkVersion)
+   - Recommended setup in Android Studio: install Android SDK Platform 34 or newer to match current Flutter defaults
+
+4. Gradle Wrapper:
+   - Gradle 8.4
+   - Source: android/gradle/wrapper/gradle-wrapper.properties
+
 ## Install Dependencies
 
 From the project root, run:
