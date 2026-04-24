@@ -12,6 +12,7 @@ import '../features/coordinator/presentation/screens/coordinator_profile_screen.
 import '../features/coordinator/presentation/screens/coordinator_report_screen.dart';
 import '../features/coordinator/presentation/screens/program_analytics_screen.dart';
 import '../features/coordinator/presentation/screens/supervise_teachers_screen.dart';
+import '../features/coordinator/presentation/screens/assign_teacher_screen.dart';
 import '../features/dictionary/presentation/screens/dictionary_screen.dart';
 import '../features/face_mesh/presentation/screens/mouth_guide_screen.dart';
 import '../features/games/presentation/screens/games_hub_screen.dart';
@@ -286,6 +287,10 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: '/coordinator/supervise',
           builder: (context, state) => const SuperviseTeachersScreen(),
+        ),
+        GoRoute(
+          path: '/coordinator/assign-teacher',
+          builder: (context, state) => const AssignTeacherScreen(),
         ),
         GoRoute(
           path: '/coordinator/report',

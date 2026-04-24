@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:basa_ai/l10n/generated/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -160,14 +160,29 @@ class CoordinatorDashboardScreen extends ConsumerWidget {
             ),
             const SizedBox(height: Spacing.xxl),
 
-            // View All Analytics button
-            SizedBox(
-              width: double.infinity,
-              height: TouchTargets.buttonHeight,
-              child: ElevatedButton(
-                onPressed: () => context.push('/coordinator/analytics'),
-                child: Text(l10n.coordinatorViewAnalytics),
-              ),
+            // Actions row
+            Row(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: TouchTargets.buttonHeight,
+                    child: OutlinedButton(
+                      onPressed: () => context.push('/coordinator/assign-teacher'),
+                      child: Text(l10n.assignTeacherTitle),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: Spacing.md),
+                Expanded(
+                  child: SizedBox(
+                    height: TouchTargets.buttonHeight,
+                    child: ElevatedButton(
+                      onPressed: () => context.push('/coordinator/analytics'),
+                      child: Text(l10n.coordinatorViewAnalytics),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

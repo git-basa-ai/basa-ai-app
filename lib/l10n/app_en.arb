@@ -282,5 +282,17 @@
 
   "teacherManageLearners": "Manage Learners",
   "teacherViewProgress": "View Progress",
-  "teacherGenerateReport": "Generate Report"
+  "teacherGenerateReport": "Generate Report",
+  "assignTeacherTitle": "Assign Teacher to Class",
+  "assignTeacherUnassigned": "Unassigned",
+  "assignTeacherButton": "Assign Teacher",
+  "assignTeacherReassign": "Reassign",
+  "assignTeacherCreateClass": "Create New Class",
+  "assignTeacherGradeLabel": "Grade Level",
+  "assignTeacherSectionLabel": "Section Name",
+  "assignTeacherSelectTeacher": "Select Teacher",
+  "assignTeacherConfirm": "Assign",
+  "assignTeacherEmpty": "No classes yet. Tap + to create your first class.",
+  "assignTeacherSuccess": "Teacher assigned successfully!",
+  "assignTeacherCreateSuccess": "Class created successfully!"
 }

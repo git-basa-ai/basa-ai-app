@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:basa_ai/l10n/generated/app_localizations.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 /// Shell widget providing bottom navigation for all teacher screens.
